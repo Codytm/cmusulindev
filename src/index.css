@@ -1,0 +1,515 @@
+/* -------------------------------------------------------------------------
+   Design tokens
+   Palette: near-black blue-navy base, warm copper accent for contrast.
+   Type: Space Grotesk (display), Inter (body), IBM Plex Mono (data/labels).
+------------------------------------------------------------------------- */
+:root {
+  --bg: #0b0e14;
+  --surface: #12161f;
+  --border: #232938;
+  --text: #e7eaf0;
+  --text-dim: #8890a3;
+  --accent: #3ddc84;
+  --accent-dim: #1f9d5a;
+
+  --font-display: "JetBrains Mono", monospace;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --content-width: 640px;
+  --sidebar-width: 260px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------
+   Layout
+------------------------------------------------------------------------- */
+.layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-top .sidebar-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.sidebar-top .sidebar-role {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 7px 10px;
+  margin-left: -10px;
+  border-left: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  color: var(--text);
+  border-left-color: var(--accent);
+}
+
+.sidebar-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.sidebar-foot a {
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.sidebar-foot a:hover {
+  color: var(--accent);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 64px 40px 120px;
+}
+
+.content {
+  max-width: var(--content-width);
+}
+
+section {
+  margin-bottom: 88px;
+  scroll-margin-top: 32px;
+}
+
+.section-heading {
+  font-size: 1.4rem;
+  margin-bottom: 28px;
+}
+
+/* -------------------------------------------------------------------------
+   Mobile top nav (shown under 900px instead of sidebar)
+------------------------------------------------------------------------- */
+.topnav {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 14, 20, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topnav .topnav-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.topnav-links {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.topnav-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.topnav-links a.active {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+  .topnav {
+    display: flex;
+  }
+  .main {
+    padding: 40px 20px 100px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Hero
+------------------------------------------------------------------------- */
+.hero-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+}
+
+.hero .hero-tagline {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  max-width: 52ch;
+  min-height: 1.6em;
+}
+
+.hero .cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero-meta {
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* -------------------------------------------------------------------------
+   About
+------------------------------------------------------------------------- */
+.about p {
+  color: var(--text-dim);
+  max-width: 62ch;
+}
+
+/* -------------------------------------------------------------------------
+   Experience — vertical timeline
+------------------------------------------------------------------------- */
+.timeline {
+  border-left: 1px solid var(--border);
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.timeline-dates {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.timeline-role {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.timeline-company {
+  color: var(--accent);
+}
+
+.timeline-location {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.timeline-highlights {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stack-row {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stack-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-dim);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+}
+
+/* -------------------------------------------------------------------------
+   Projects
+------------------------------------------------------------------------- */
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item {
+  padding: 22px 0;
+  border-top: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.project-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.project-item:hover {
+  border-left-color: var(--accent);
+}
+
+.project-item-inner {
+  padding-left: 16px;
+}
+
+.project-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-name {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.project-link {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.project-link:hover {
+  color: var(--accent);
+}
+
+.project-description {
+  margin-top: 8px;
+  color: var(--text-dim);
+  max-width: 58ch;
+}
+
+/* -------------------------------------------------------------------------
+   Skills
+------------------------------------------------------------------------- */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.skill-group-name {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.skill-group {
+  display: flex;
+  gap: 20px;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+/* -------------------------------------------------------------------------
+   Education
+------------------------------------------------------------------------- */
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.education-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.education-school {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.education-degree {
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.education-dates {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------
+   Hobbies — deliberately lighter weight than the professional sections
+------------------------------------------------------------------------- */
+.hobby-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hobby-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hobby-item:last-child {
+  border-bottom: none;
+}
+
+.hobby-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.hobby-blurb {
+  margin: 6px 0 0;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  max-width: 56ch;
+}
+
+/* -------------------------------------------------------------------------
+   Contact
+------------------------------------------------------------------------- */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1rem;
+  width: fit-content;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.contact-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+footer {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
