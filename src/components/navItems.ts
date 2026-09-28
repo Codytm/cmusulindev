@@ -1,9 +1,11 @@
+import {hobbies} from "../data/resume";
+
 export const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
-  { id: "hobbies", label: "Hobbies" },
+  ...(hobbies.length > 0 ? [{ id: "hobbies", label: "Hobbies" }] : []),
   { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
+//  { id: "contact", label: "Contact" },
 ];

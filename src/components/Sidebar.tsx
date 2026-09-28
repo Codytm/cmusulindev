@@ -22,7 +22,6 @@ export function Sidebar({ active }: { active: string }) {
       </div>
 
       <div className="sidebar-foot">
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
         <a href={profile.github} target="_blank" rel="noreferrer">
           GitHub
         </a>

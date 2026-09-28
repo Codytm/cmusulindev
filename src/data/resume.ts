@@ -1,25 +1,21 @@
-// ---------------------------------------------------------------------------
-// This is the only file you should need to touch to update your content.
-// Fill in your real details — everything on the site is pulled from here.
-// ---------------------------------------------------------------------------
 
 export const profile = {
   name: "Cody Musulin",
-  role: "Software Engineer",
+  role: "Software Developer",
   location: "Pinckney, MI",
-  tagline: "I build fast, reliable web apps and enjoy the last 10% nobody sees.",
-  bio: "I'm a software engineer who likes turning ambiguous problems into small, well-tested pieces of software. Most of my work lives in the browser, but I'm just as comfortable a few layers down — schema design, query performance, deploy pipelines. Outside of work I'm usually rebuilding something that already worked fine, just to understand it better.",
-  email: "jordan@example.com",
-  github: "https://github.com/jordanavery",
-  linkedin: "https://linkedin.com/in/jordanavery",
-  resumePdf: "/resume.pdf", // drop a PDF in /public and point here, or leave as-is
+  tagline: "Aspiring developer attempting to bridge healthcare and enterprise IT with automation and data-driven systems.",
+  bio: "I hold a B.S. in Computer Science and a B.S. in Biomedical Sciences, which has given me a unique combination of software engineering knowledge, healthcare domain experience, and enterprise IT experience. I'm drawn to work where I can build scalable software, automate workflows, and design data-driven solutions to real operational problems. Most recently that's meant PowerShell automation and cloud administration in an enterprise IT role, and building a healthcare analytics platform from the database up in my own time.",
+  email: "codytm71@gmail.com",
+  github: "https://github.com/Codytm/",
+  linkedin: "https://www.linkedin.com/in/cody-musulin-705760219/",
+  resumePdf: "/resume.pdf",
 };
 
 export type Experience = {
   company: string;
   role: string;
   start: string;
-  end: string; // "Present" is fine
+  end: string;
   location: string;
   highlights: string[];
   stack?: string[];
@@ -27,29 +23,47 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    company: "Northline Systems",
-    role: "Software Engineer",
-    start: "2023",
+    company: "Soil and Materials Engineers",
+    role: "Information Technology Intern",
+    start: "May 2026",
     end: "Present",
-    location: "Remote",
+    location: "Plymouth, MI",
     highlights: [
-      "Led migration of a legacy monolith to a service-based architecture, cutting deploy time from 40 minutes to under 5.",
-      "Built an internal analytics dashboard used daily by 3 teams to track pipeline health.",
-      "Mentored two junior engineers through onboarding and their first production releases.",
+      "Developing PowerShell scripts to automate large-scale file migration tasks, reducing manual effort and improving consistency.",
+      "Building and enhancing automation scripts to streamline Windows laptop provisioning and deployment through Microsoft Intune.",
+      "Contributing to data collection and manipulation through Python using Pandas.",
+      "Supporting enterprise IT operations using Microsoft technologies including Azure, Intune, Entra ID, and Microsoft 365.",
+      "Collaborating on Azure administration tasks, gaining experience with cloud identity, endpoint management, and enterprise infrastructure.",
+      "Troubleshooting hardware, software, and account issues while supporting end users through Zendesk and ScreenConnect.",
     ],
-    stack: ["TypeScript", "React", "Node.js", "PostgreSQL"],
+    stack: ["PowerShell", "Python", "Azure", "Intune", "Entra ID"],
   },
   {
-    company: "Fieldstone Labs",
-    role: "Frontend Engineer",
-    start: "2021",
-    end: "2023",
-    location: "Detroit, MI",
+    company: "Versiti Blood Center of Michigan",
+    role: "Blood Distribution Specialist",
+    start: "Jul 2025",
+    end: "May 2026",
+    location: "Farmington Hills, MI",
     highlights: [
-      "Owned the component library adopted across 4 product teams, reducing UI inconsistencies.",
-      "Improved Lighthouse performance scores from 61 to 94 on the primary customer dashboard.",
+      "Managed the safe, timely distribution of blood products to hospitals, clinics, and emergency departments under FDA, AABB, and organizational regulations.",
+      "Verified, selected, and prepared blood components based on physician orders and patient compatibility requirements.",
+      "Monitored inventory levels and stock rotation to reduce waste and maintain product viability.",
+      "Coordinated urgent and routine deliveries, prioritizing critical patient needs and emergency requests.",
+      "Used laboratory information systems (WellSky) and tracking software (EliteExtra) to maintain accurate records of handling, storage, and distribution.",
     ],
-    stack: ["React", "JavaScript", "Sass"],
+  },
+  {
+    company: "Strata Oncology",
+    role: "Clinical Laboratory Accessioner",
+    start: "Mar 2022",
+    end: "Dec 2023",
+    location: "Ann Arbor, MI",
+    highlights: [
+      "Ensured quality of incoming samples and verified medical record matches for each patient sample.",
+      "Managed daily handling of sensitive patient information with strict adherence to confidentiality protocols, contributing to a 0% data breach incident rate.",
+      "Conducted precise microdissection of patient samples and maintained laboratory equipment as part of core lab operations.",
+      "Led company-wide archiving of patient samples, retrieving and storing thousands of samples spanning 2019–present as requested.",
+    ],
   },
 ];
 
@@ -62,18 +76,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "routewise",
+    name: "healthcare-analytics-platform (Current)",
     description:
-      "A route-planning tool for delivery drivers that factors in real-time traffic and delivery windows.",
-    link: "https://github.com/jordanavery/routewise",
-    stack: ["TypeScript", "React", "Mapbox"],
+      "A normalized PostgreSQL database modeling patients, clinical visits, ICD-10 diagnoses, and demographic health data, paired with a Python ETL pipeline (Pandas, SQLAlchemy, psycopg2) that extracts, transforms, and bulk-loads CDC public mortality datasets with idempotent upsert logic. Built with a modular backend architecture to support REST API development and future deployment on Azure.",
+    stack: ["Python", "PostgreSQL", "Pandas", "SQLAlchemy", "FastAPI", "Azure"],
   },
   {
-    name: "pgwatch",
+    name: "finite-state-machine-workbench",
     description:
-      "A lightweight CLI for monitoring slow Postgres queries and surfacing them in Slack.",
-    link: "https://github.com/jordanavery/pgwatch",
-    stack: ["Rust", "PostgreSQL"],
+      "Enhanced an open-source finite state machine editor by redesigning the dashboard and simplifying the UI to improve usability. Implemented and refined automata workflows including Regex → NFA/DFA conversion, DFA minimization, and DFA → Regex export, while preserving the project's GPL-3.0 licensing and attribution requirements.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "React Konva"],
   },
 ];
 
@@ -83,30 +95,11 @@ export type SkillGroup = {
 };
 
 export const skills: SkillGroup[] = [
-  { category: "Languages", items: ["TypeScript", "JavaScript", "Python", "Rust"] },
-  { category: "Frontend", items: ["React", "Vite", "CSS", "Accessibility"] },
-  { category: "Backend", items: ["Node.js", "PostgreSQL", "REST APIs"] },
-  { category: "Tools", items: ["Git", "Docker", "CI/CD"] },
-];
-
-export type Hobby = {
-  name: string;
-  blurb: string;
-};
-
-export const hobbies: Hobby[] = [
-  {
-    name: "Rock climbing",
-    blurb: "Mostly bouldering on weekends — still working up to my first V5.",
-  },
-  {
-    name: "Home coffee roasting",
-    blurb: "Small-batch roasts on a stovetop popcorn popper. Ethiopian naturals are my favorite right now.",
-  },
-  {
-    name: "Woodworking",
-    blurb: "Built most of my own furniture over the last two years, mistakes included.",
-  },
+  { category: "Programming", items: ["Python", "Java", "SQL", "PowerShell", "TypeScript", "PHP"] },
+  { category: "Frameworks & Development", items: ["React", "FastAPI", "Spring Boot", "REST APIs"] },
+  { category: "Data Engineering", items: ["PostgreSQL", "ETL", "Pandas", "SQLAlchemy"] },
+  { category: "Cloud & Infrastructure", items: ["Azure", "AWS", "Git", "Linux"] },
+  { category: "Enterprise IT", items: ["Intune", "Entra ID", "Microsoft 365", "PowerShell Automation"] },
 ];
 
 export type Education = {
@@ -119,10 +112,23 @@ export type Education = {
 
 export const education: Education[] = [
   {
-    school: "University of Michigan",
+    school: "Eastern Michigan University",
     degree: "B.S. in Computer Science",
-    start: "2017",
-    end: "2021",
-    location: "Ann Arbor, MI",
+    start: "2023",
+    end: "2026",
+    location: "Ypsilanti, MI",
+  },
+  {
+    school: "Central Michigan University",
+    degree: "B.S. in Biomedical Sciences",
+    start: "2016",
+    end: "2020",
+    location: "Mount Pleasant, MI",
   },
 ];
+
+export type Hobby = {
+  name: string;
+  blurb: string;
+};
+export const hobbies: Hobby[] = [];

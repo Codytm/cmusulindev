@@ -7,7 +7,6 @@ import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Hobbies } from "./components/Hobbies";
 import { Education } from "./components/Education";
-import { Contact } from "./components/Contact";
 import { navItems } from "./components/navItems";
 import { useActiveSection } from "./hooks/useActiveSection";
 import { profile } from "./data/resume";
@@ -31,7 +30,6 @@ function App() {
           <Skills />
           <Hobbies />
           <Education />
-          <Contact />
         </div>
         <footer>
           {profile.name} · Built with React &amp; TypeScript

@@ -1,8 +1,4 @@
-/* -------------------------------------------------------------------------
-   Design tokens
-   Palette: near-black blue-navy base, warm copper accent for contrast.
-   Type: Space Grotesk (display), Inter (body), IBM Plex Mono (data/labels).
-------------------------------------------------------------------------- */
+
 :root {
   --bg: #0b0e14;
   --surface: #12161f;
@@ -333,7 +329,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent-dim);
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent-dim);
   padding: 3px 9px;
 }
 
@@ -411,12 +407,14 @@ section {
 
 .skill-group {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
 }
 
 .skill-items {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 8px 14px;
 }
 
@@ -448,7 +446,7 @@ section {
 .education-dates {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--accent-dim);
   white-space: nowrap;
 }
 

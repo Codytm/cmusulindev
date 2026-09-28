@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Then open the local URL it prints (usually `http://localhost:5173`).
+Then open the local URL it prints.
 
 ## Editing your content
 

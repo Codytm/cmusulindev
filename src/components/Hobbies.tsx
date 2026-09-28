@@ -1,6 +1,8 @@
 import { hobbies } from "../data/resume";
 
 export function Hobbies() {
+  if (hobbies.length === 0) return null;
+
   return (
     <section className="hobbies" id="hobbies">
       <h2 className="section-heading">Hobbies</h2>
