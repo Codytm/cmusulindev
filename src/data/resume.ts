@@ -5,7 +5,7 @@ export const profile = {
   location: "Pinckney, MI",
   tagline: "Aspiring developer attempting to bridge healthcare and enterprise IT with automation and data-driven systems.",
   bio: "I hold a B.S. in Computer Science and a B.S. in Biomedical Sciences, which has given me a unique combination of software engineering knowledge, healthcare domain experience, and enterprise IT experience. I'm drawn to work where I can build scalable software, automate workflows, and design data-driven solutions to real operational problems. Most recently that's meant PowerShell automation and cloud administration in an enterprise IT role, and building a healthcare analytics platform from the database up in my own time.",
-  email: "codytm71@gmail.com",
+  email: "",
   github: "https://github.com/Codytm/",
   linkedin: "https://www.linkedin.com/in/cody-musulin-705760219/",
   resumePdf: "/resume.pdf",
