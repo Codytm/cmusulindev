@@ -14,7 +14,9 @@ Then open the local URL it prints.
 ## Editing your content
 
 Everything on the page — your name, bio, jobs, projects, skills, and
-education — comes from one file:
+education — comes from one file. About-page paragraphs and the longer
+project writeups (summary, description, and why you built it) live there
+too:
 
 ```
 src/data/resume.ts
@@ -37,9 +39,13 @@ src/
 
 ## Navigation
 
-The sidebar links are anchors (`#about`, `#projects`, etc.) that smooth-scroll
-to each section on the same page. As you scroll, the current section is
-highlighted in the sidebar automatically.
+About and Projects are their own pages (`/about`, `/projects`, and
+`/projects/<slug>`). The home page still has a short section for each.
+As you scroll the home page, the sidebar highlights whichever section is
+in view, including About and Projects.
+
+Cloudflare Pages needs `public/_redirects` so those paths load `index.html`
+on a refresh. The dev server already does that.
 
 ## Building for production
 

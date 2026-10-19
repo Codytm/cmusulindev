@@ -1,19 +1,34 @@
 import { profile } from "../data/resume";
-import { navItems } from "./navItems";
+import { useActiveSection } from "../hooks/useActiveSection";
+import { Link, useRouter } from "../router";
+import { homeSectionIds, navItems } from "./navItems";
 
-export function TopNav({ active }: { active: string }) {
+export function TopNav() {
+  const { path } = useRouter();
+  const section = useActiveSection(homeSectionIds, path);
+  const active =
+    path === "/about"
+      ? "about"
+      : path.startsWith("/projects")
+        ? "projects"
+        : path === "/"
+          ? section
+          : "";
+
   return (
     <div className="topnav">
-      <span className="topnav-name">{profile.name}</span>
+      <Link href="/" className="topnav-name">
+        {profile.name}
+      </Link>
       <nav className="topnav-links">
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.id}
-            href={`#${item.id}`}
+            href={item.href}
             className={active === item.id ? "active" : undefined}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </div>

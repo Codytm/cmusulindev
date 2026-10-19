@@ -7,33 +7,54 @@ import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Hobbies } from "./components/Hobbies";
 import { Education } from "./components/Education";
-import { navItems } from "./components/navItems";
-import { useActiveSection } from "./hooks/useActiveSection";
+import { AboutPage } from "./pages/AboutPage";
+import { NotFound } from "./pages/NotFound";
+import { ProjectPage } from "./pages/ProjectPage";
+import { ProjectsPage } from "./pages/ProjectsPage";
 import { profile } from "./data/resume";
+import { useRouter } from "./router";
 
-const sectionIds = navItems.map((item) => item.id);
+function Home() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Hobbies />
+      <Education />
+    </>
+  );
+}
+
+function Page() {
+  const { path } = useRouter();
+
+  if (path === "/") return <Home />;
+  if (path === "/about") return <AboutPage />;
+  if (path === "/projects") return <ProjectsPage />;
+
+  const projectPrefix = "/projects/";
+  if (path.startsWith(projectPrefix)) {
+    const slug = decodeURIComponent(path.slice(projectPrefix.length));
+    return <ProjectPage slug={slug} />;
+  }
+
+  return <NotFound />;
+}
 
 function App() {
-  const active = useActiveSection(sectionIds);
-
   return (
     <div className="layout">
-      <Sidebar active={active} />
+      <Sidebar />
 
       <main className="main">
-        <TopNav active={active} />
+        <TopNav />
         <div className="content">
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Hobbies />
-          <Education />
+          <Page />
         </div>
-        <footer>
-          {profile.name} · Built with React &amp; TypeScript
-        </footer>
+        <footer>{profile.name} · Built with React &amp; TypeScript</footer>
       </main>
     </div>
   );

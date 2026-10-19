@@ -91,6 +91,9 @@ button:focus-visible {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
 }
 
 .sidebar-top .sidebar-role {
@@ -107,6 +110,9 @@ button:focus-visible {
 }
 
 .sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
   color: var(--text-dim);
   font-size: 0.9rem;
@@ -114,6 +120,11 @@ button:focus-visible {
   margin-left: -10px;
   border-left: 2px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-more {
+  color: var(--accent-dim);
+  font-size: 0.8rem;
 }
 
 .sidebar-nav a:hover,
@@ -158,6 +169,104 @@ section {
   margin-bottom: 28px;
 }
 
+.section-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-heading-row .section-heading {
+  margin-bottom: 28px;
+}
+
+.text-link {
+  color: var(--accent);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.text-link:hover {
+  color: var(--text);
+}
+
+.page-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+
+.page-title {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.page-lede {
+  margin: 16px 0 0;
+  color: var(--text-dim);
+  max-width: 58ch;
+}
+
+.prose {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prose p,
+.prose-line {
+  margin: 0;
+  color: var(--text-dim);
+  max-width: 62ch;
+}
+
+.page-block {
+  margin-top: 48px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.project-status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-dim);
+  white-space: nowrap;
+}
+
+.project-card {
+  display: block;
+  padding: 22px 0 22px 16px;
+  border-top: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.project-card:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.project-card:hover {
+  border-left-color: var(--accent);
+}
+
+.project-card:hover .project-name,
+.project-item:hover .project-name {
+  color: var(--accent);
+}
+
 /* -------------------------------------------------------------------------
    Mobile top nav (shown under 900px instead of sidebar)
 ------------------------------------------------------------------------- */
@@ -172,17 +281,23 @@ section {
   padding: 16px 20px;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .topnav .topnav-name {
   font-family: var(--font-display);
   font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .topnav-links {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  min-width: 0;
 }
 
 .topnav-links a {
@@ -202,9 +317,27 @@ section {
   }
   .topnav {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px 12px;
+  }
+  .topnav-links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px 10px;
+  }
+  .topnav-links a {
+    font-size: 0.8rem;
   }
   .main {
-    padding: 40px 20px 100px;
+    padding: 0 0 80px;
+  }
+  .content {
+    padding: 28px 20px 0;
+  }
+  footer {
+    padding: 32px 20px 0;
   }
 }
 
@@ -342,9 +475,12 @@ section {
 }
 
 .project-item {
+  display: block;
   padding: 22px 0;
   border-top: 1px solid var(--border);
   border-left: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
   transition: border-color 0.15s ease;
 }
 
@@ -371,6 +507,7 @@ section {
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .project-link {

@@ -68,24 +68,48 @@ export const experience: Experience[] = [
   },
 ];
 
+export const about = {
+  paragraphs: [
+    "I hold a B.S. in Computer Science from Eastern Michigan University and a B.S. in Biomedical Sciences from Central Michigan University. That mix is why I look for work that sits between software and operations, especially anywhere health data has to be handled carefully.",
+    "I'm drawn to building software that removes manual work: automation, data pipelines, and tools that make an operational process easier to run the same way every time. The problems I like are usually the unglamorous ones — moving files correctly, provisioning a laptop consistently, or loading a dataset so it can be queried again tomorrow.",
+    "Most recently that's meant PowerShell automation and cloud administration in an enterprise IT role, and building a healthcare analytics platform from the database up in my own time.",
+  ],
+};
+
 export type Project = {
+  slug: string;
   name: string;
+  status: string;
+  summary: string;
   description: string;
+  inspiration: string;
   link?: string;
   stack: string[];
 };
 
 export const projects: Project[] = [
   {
-    name: "healthcare-analytics-platform (Current)",
+    slug: "healthcare-analytics-platform",
+    name: "healthcare-analytics-platform",
+    status: "In progress",
+    summary:
+      "A PostgreSQL database and Python ETL pipeline for public health data, structured so it can grow into a REST API on Azure.",
     description:
       "A normalized PostgreSQL database modeling patients, clinical visits, ICD-10 diagnoses, and demographic health data, paired with a Python ETL pipeline (Pandas, SQLAlchemy, psycopg2) that extracts, transforms, and bulk-loads CDC public mortality datasets with idempotent upsert logic. Built with a modular backend architecture to support REST API development and future deployment on Azure.",
+    inspiration:
+      "Clinical work showed me how much of healthcare depends on records that have to be right: sample identity, inventory, and where a product is going. I wanted a software project in that domain that I owned from the schema up, instead of starting at a dashboard. CDC public mortality data is open, documented, and large enough that a sloppy load shows immediately, so it was a useful first dataset. The database and ETL are what I'm building now. The backend stays modular because the next pieces are a REST API and an Azure deployment, and I don't want to redo the schema when those land.",
     stack: ["Python", "PostgreSQL", "Pandas", "SQLAlchemy", "FastAPI", "Azure"],
   },
   {
+    slug: "finite-state-machine-workbench",
     name: "finite-state-machine-workbench",
+    status: "Completed",
+    summary:
+      "An open-source automata editor extended with clearer diagrams and Regex, NFA, and DFA conversion workflows.",
     description:
       "Enhanced an open-source finite state machine editor by redesigning the dashboard and simplifying the UI to improve usability. Implemented and refined automata workflows including Regex → NFA/DFA conversion, DFA minimization, and DFA → Regex export, while preserving the project's GPL-3.0 licensing and attribution requirements.",
+    inspiration:
+      "Automata clicked for me once I could see the machine, not just the definition. I found an open-source editor that already drew state diagrams and extended it instead of rebuilding that part. The work I cared about was the workflow: turning a regular expression into an NFA and a DFA, minimizing the DFA, and exporting a DFA back to a regex, on a dashboard that stayed out of the way. The project is GPL-3.0, so the license and original attribution stay intact.",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "React Konva"],
   },
 ];

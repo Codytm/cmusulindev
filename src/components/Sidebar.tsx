@@ -1,22 +1,42 @@
 import { profile } from "../data/resume";
-import { navItems } from "./navItems";
+import { useActiveSection } from "../hooks/useActiveSection";
+import { Link, useRouter } from "../router";
+import { homeSectionIds, navItems } from "./navItems";
 
-export function Sidebar({ active }: { active: string }) {
+export function Sidebar() {
+  const { path } = useRouter();
+  const section = useActiveSection(homeSectionIds, path);
+  const active =
+    path === "/about"
+      ? "about"
+      : path.startsWith("/projects")
+        ? "projects"
+        : path === "/"
+          ? section
+          : "";
+
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
-        <div className="sidebar-name">{profile.name}</div>
+        <Link href="/" className="sidebar-name">
+          {profile.name}
+        </Link>
         <div className="sidebar-role">{profile.role}</div>
 
         <nav className="sidebar-nav">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.id}
-              href={`#${item.id}`}
+              href={item.href}
               className={active === item.id ? "active" : undefined}
             >
               {item.label}
-            </a>
+              {item.page && (
+                <span className="nav-more" aria-hidden="true">
+                  →
+                </span>
+              )}
+            </Link>
           ))}
         </nav>
       </div>
