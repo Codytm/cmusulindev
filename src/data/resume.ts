@@ -7,7 +7,7 @@ export const profile = {
   bio: "I hold a B.S. in Computer Science and a B.S. in Biomedical Sciences, which has given me a unique combination of software engineering knowledge, healthcare domain experience, and enterprise IT experience. I'm drawn to work where I can build scalable software, automate workflows, and design data-driven solutions to real operational problems. Most recently that's meant PowerShell automation and cloud administration in an enterprise IT role, and building a healthcare analytics platform from the database up in my own time.",
   email: "",
   github: "https://github.com/Codytm/",
-  linkedin: "https://www.linkedin.com/in/cody-musulin-705760219/",
+  linkedin: "https://www.linkedin.com/in/cody-musulin/",
   resumePdf: "/resume.pdf",
 };
 
@@ -123,7 +123,7 @@ export const skills: SkillGroup[] = [
   { category: "Programming", items: ["Python", "Java", "SQL", "PowerShell", "TypeScript", "PHP"] },
   { category: "Frameworks & Development", items: ["React", "FastAPI", "Spring Boot", "REST APIs"] },
   { category: "Data Engineering", items: ["PostgreSQL", "ETL", "Pandas", "SQLAlchemy"] },
-  { category: "Cloud & Infrastructure", items: ["Azure", "AWS", "Git", "Linux"] },
+  { category: "Cloud & Infrastructure", items: ["Azure", "AWS", "Terraform", "Docker", "Git", "Linux"] },
   { category: "Enterprise IT", items: ["Intune", "Entra ID", "Microsoft 365", "PowerShell Automation"] },
 ];
 
