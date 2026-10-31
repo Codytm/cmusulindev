@@ -99,7 +99,7 @@ export const skills: SkillGroup[] = [
   { category: "Programming", items: ["Python", "Java", "SQL", "PowerShell", "TypeScript", "PHP"] },
   { category: "Frameworks & Development", items: ["React", "FastAPI", "Spring Boot", "REST APIs"] },
   { category: "Data Engineering", items: ["PostgreSQL", "ETL", "Pandas", "SQLAlchemy"] },
-  { category: "Cloud & Infrastructure", items: ["Azure", "AWS", "Git", "Linux"] },
+  { category: "Cloud & Infrastructure", items: ["Azure", "AWS", "Terraform", "Docker", "Git", "Linux"] },
   { category: "Enterprise IT", items: ["Intune", "Entra ID", "Microsoft 365", "PowerShell Automation"] },
 ];
 
